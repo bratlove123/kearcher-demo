@@ -1,0 +1,69 @@
+{
+  "name": "ak-pra-backend",
+  "version": "0.0.1",
+  "description": "Kira CV3 Pra Backend",
+  "repository": {
+    "type": "git",
+    "url": "https://git.app.kaercher.com/scm/ipp/ak-pra-backend.git"
+  },
+  "author": {
+    "name": "Nghia Nguyen",
+    "email": "nghia.nguyen@zoi.de"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "prepare": "husky install",
+    "install:all": "npm install && bin/for-all-components.js npm install",
+    "build": "",
+    "build:all": "bin/for-all-components.js npm run build",
+    "test": "npm run test:unit",
+    "test:all": "bin/for-all-components.js npm test",
+    "test:coverage": "npm run test:unit -- --coverage",
+    "test:coverage:all": "bin/for-all-components.js npm run test:coverage",
+    "test:unit": "",
+    "test:unit:all": "bin/for-all-components.js npm run test:unit",
+    "eslint": "eslint --ext=.js,.mjs,.ts --max-warnings=0",
+    "lint": "npm run eslint -- bin/",
+    "lint:all": "bin/for-all-components.js npm run lint",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:fix:all": "bin/for-all-components.js npm run lint:fix",
+    "really:reformat:js:json:md:mjs:yaml:ts": "prettier --write ."
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/eslint-parser": "^7.13.10",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.12",
+    "@tsconfig/node14": "^1.0.0",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.34",
+    "@types/pino": "^6.3.6",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "confluence-api": "^1.4.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "git-repo-info": "^2.1.1",
+    "husky": "^6.0.0",
+    "jest": "^26.0.1",
+    "jest-junit": "^12.0.0",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "showdown-confluence": "^2.0.2",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "lint-staged": {
+    "**/*.(js|mjs|ts)": [
+      "eslint --max-warnings=0 --fix"
+    ],
+    "**/*.(js|json|mjs|md|yml|yaml|ts)": [
+      "prettier --write"
+    ]
+  }
+}

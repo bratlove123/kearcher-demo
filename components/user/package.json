@@ -1,0 +1,35 @@
+{
+    "name": "graphql-robot",
+    "version": "0.0.1",
+    "description": "Graphql functions for Robot",
+    "repository": {
+      "type": "git",
+      "url": "https://git.app.kaercher.com/scm/ipp/ak-pra-backend.git"
+    },
+    "author": {
+      "name": "Nghia Nguyen",
+      "email": "nghia.nguyen@zoi.de"
+    },
+    "license": "ISC",
+    "scripts": {
+      "build": "tsc",
+      "test": "npm run test:unit",
+      "test:unit": "jest --verbose src/",
+      "test:unit:watch": "npm run test:unit -- --watch --notify",
+      "test:coverage": "npm run test:unit -- --coverage",
+      "lint": "eslint src/",
+      "lint:fix": "npm run lint -- --fix"
+    },
+    "devDependencies": {
+      "@types/jest": "^26.0.23",
+      "@types/node": "^15.9.0",
+      "application": "file:../../libraries/application",
+      "common": "file:../../libraries/common",
+      "jest": "^27.0.3",
+      "ts-jest": "^27.0.2",
+      "ts-node": "^10.0.0",
+      "typescript": "^4.3.4",
+      "serverless-prune-plugin": "^1.5.0"
+    }
+  }
+  

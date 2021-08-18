@@ -1,0 +1,40 @@
+{
+  "name": "common",
+  "version": "0.0.1",
+  "description": "Common module for ak-pra-backend",
+  "repository": {
+    "type": "git",
+    "url": "https://git.app.kaercher.com/scm/ipp/ak-pra-backend.git"
+  },
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run test:unit",
+    "test:unit": "jest --verbose src/.*.spec.ts",
+    "test:unit:watch": "npm run test:unit -- --watch --notify",
+    "test:coverage": "npm run test:unit -- --coverage",
+    "lint": "eslint src/",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Nghia Nguyen",
+    "email": "nghia.nguyen@zoi.de"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "typeorm": "^0.2.33"
+  },
+  "devDependencies": {
+    "@kaercher/ipp-cloud-common-lambda-libs": "1.0.2",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.9.0",
+    "inversify": "^5.1.1",
+    "jest": "^27.0.5",
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  }
+}
