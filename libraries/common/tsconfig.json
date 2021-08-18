@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es6"],
+    "types": ["node", "jest", "reflect-metadata"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strict": false,
+    "rootDir": "./src",
+    "outDir": "./dist"
+  }
+}
