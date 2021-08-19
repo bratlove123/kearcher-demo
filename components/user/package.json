@@ -1,14 +1,14 @@
 {
     "name": "graphql-robot",
     "version": "0.0.1",
-    "description": "Graphql functions for Robot",
+    "description": "API gateway user management",
     "repository": {
       "type": "git",
-      "url": "https://git.app.kaercher.com/scm/ipp/ak-pra-backend.git"
+      "url": "https://git.zoi.de/kaercher/mapo/ak-mapo-backend.git"
     },
     "author": {
-      "name": "Nghia Nguyen",
-      "email": "nghia.nguyen@zoi.de"
+      "name": "Zoi",
+      "email": "zoi@zoi.de"
     },
     "license": "ISC",
     "scripts": {
