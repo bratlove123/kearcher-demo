@@ -1,0 +1,57 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template for this Serverless application",
+  "Resources": {
+    "LibrariesLambdaLayer": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "Content": {
+          "S3Bucket": "mapo-artifacts-eu-west-1-dev",
+          "S3Key": "serverless/mapo-layers/dev/1629448445533-2021-08-20T08:34:05.533Z/Libraries.zip"
+        },
+        "LayerName": "mapo-layers-dev",
+        "Description": "lambda layer libraries",
+        "CompatibleRuntimes": [
+          "nodejs14.x"
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "ServerlessDeploymentBucketName": {
+      "Value": "mapo-artifacts-eu-west-1-dev",
+      "Export": {
+        "Name": "sls-mapo-layers-dev-ServerlessDeploymentBucketName"
+      }
+    },
+    "LibrariesLambdaLayerQualifiedArn": {
+      "Description": "Current Lambda layer version",
+      "Value": {
+        "Ref": "LibrariesLambdaLayer"
+      },
+      "Export": {
+        "Name": "sls-mapo-layers-dev-LibrariesLambdaLayerQualifiedArn"
+      }
+    },
+    "LibrariesLambdaLayerHash": {
+      "Description": "Current Lambda layer hash",
+      "Value": "070cd1a5e3def6c7d850d13c32715f9e9d0a01dc",
+      "Export": {
+        "Name": "sls-mapo-layers-dev-LibrariesLambdaLayerHash"
+      }
+    },
+    "LibrariesLambdaLayerS3Key": {
+      "Description": "Current Lambda layer S3Key",
+      "Value": "serverless/mapo-layers/dev/1629448445533-2021-08-20T08:34:05.533Z/Libraries.zip",
+      "Export": {
+        "Name": "sls-mapo-layers-dev-LibrariesLambdaLayerS3Key"
+      }
+    },
+    "LayerLibraries": {
+      "Description": "lambda layer libraries",
+      "Value": {
+        "Ref": "LibrariesLambdaLayer"
+      }
+    }
+  }
+}

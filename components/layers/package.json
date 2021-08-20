@@ -1,0 +1,27 @@
+{
+    "name": "layers",
+    "version": "0.0.1",
+    "description": "Layers module for optimize lambda container build",
+    "repository": {
+      "type": "git",
+      "url": "https://git.app.kaercher.com/scm/ipp/ak-pra-backend.git"
+    },
+    "author": {
+      "name": "Nghia Nguyen",
+      "email": "nghia.nguyen@zoi.de"
+    },
+    "license": "ISC",
+    "scripts": {
+      "build": "echo ignore",
+      "test": "echo ignore",
+      "test:unit": "echo ignore",
+      "test:unit:watch": "echo ignore",
+      "test:coverage": "echo ignore",
+      "lint": "echo ignore",
+      "lint:fix": "echo ignore"
+    },
+    "devDependencies": {
+      "serverless-prune-plugin": "^1.5.0"
+    }
+  }
+  

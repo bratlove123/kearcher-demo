@@ -1,0 +1,38 @@
+service: mapo-layers
+
+frameworkVersion: '2'
+configValidationMode: 'error'
+
+plugins:
+  - serverless-prune-plugin
+
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'eu-west-1'}
+  deploymentBucket:
+    name: ${self:custom.deploymentBucket}
+    maxPreviousDeploymentArtifacts: 10
+  # deploymentPrefix: ak-pra-backend/${self:service}/serverless
+
+custom:
+  deploymentBucket: mapo-artifacts-${opt:region, self:provider.region}-${opt:stage, self:provider.stage}
+  prune:
+    automatic: false
+    includeLayers: true
+    number: 10
+
+layers:
+  Libraries:
+    name: ${self:service}-${self:provider.stage}
+    description: lambda layer libraries
+    path: ./src/libraries
+    compatibleRuntimes:
+      - nodejs14.x
+
+resources:
+  Outputs:
+    LayerLibraries:
+      Description: lambda layer libraries
+      Value:
+        Ref: LibrariesLambdaLayer

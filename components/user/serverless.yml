@@ -1,0 +1,72 @@
+service: mapo-user-services
+
+frameworkVersion: '2'
+configValidationMode: 'error'
+
+plugins:
+  - serverless-prune-plugin
+
+provider:
+  name: aws
+  # stage: ${opt:stage, 'dev'}
+  # region: ${opt:region, 'eu-west-1'}
+  # logRetentionInDays: 14
+  # deploymentBucket:
+  #   name: ${self:custom.deploymentBucket}
+  #   maxPreviousDeploymentArtifacts: 10
+  # deploymentPrefix: ak-pra-backend/${self:service}/serverless
+  # runtime: nodejs14.x
+  # memorySize: 256
+  # timeout: 10
+  # environment:
+  #   LOG_LEVEL: ${self:custom.logLevel.${opt:stage, self:provider.stage}}
+  #   EXPOSE_ERROR_STACK: ${self:custom.expose.${opt:stage, self:provider.stage}}
+  #   DB_TYPE:  ${self:custom.infrastructure.DbType}
+  #   DB_ENDPOINT_ADDRESS: ${self:custom.infrastructure.root_db_endpoint}
+  #   DB_PORT: ${self:custom.infrastructure.DbPort}
+  #   DB_NAME: ${self:custom.infrastructure.DbName}
+  #   DB_AUTH_INFO_KEY_NAME: ${self:custom.infrastructure.DbAuthenticationInfoKeyName}
+  # vpc:
+  #   securityGroupIds:
+  #     - ${self:custom.infrastructure.root_security_group_lambda}
+  #   subnetIds:
+  #     - ${self:custom.infrastructure.root_network_sn_private_a_id}
+  #     - ${self:custom.infrastructure.root_network_sn_private_b_id}
+
+# custom:
+#   prune:
+#     automatic: true
+#     number: 10
+#   infrastructure: ${file(infrastructure.yml)}
+#   deploymentBucket: ak-pra-services-artifacts-${opt:region, self:provider.region}-${opt:stage, self:provider.stage}
+#   layers: ${file(layers.yml)}
+#   expose:
+#     dev: true
+#     stage: true
+#     prod: false
+#   logLevel:
+#     dev: info
+#     stage: debug
+#     prod: info
+
+package:
+  patterns:
+    - "!./src/**"
+    - "!**/.*"
+    - "!**/__*__/**"
+    - "!**/coverage/**"
+    - "!**/output/**"
+  excludeDevDependencies: true
+
+functions:
+  GetUser:
+    handler: dist/get-user/handler.getUser
+    layers:
+      - ${self:custom.layers.LayerLibraries}
+
+resources:
+  Outputs:
+    GetUserFnArn:
+      Description: "ARN of lambda function to get user"
+      Value:
+        Fn::GetAtt: [GetUserLambdaFunction, Arn]
