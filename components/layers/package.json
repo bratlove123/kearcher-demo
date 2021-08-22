@@ -1,16 +1,7 @@
 {
-    "name": "layers",
+    "name": "libraries-layers",
     "version": "0.0.1",
-    "description": "Layers module for optimize lambda container build",
-    "repository": {
-      "type": "git",
-      "url": "https://git.app.kaercher.com/scm/ipp/ak-pra-backend.git"
-    },
-    "author": {
-      "name": "Nghia Nguyen",
-      "email": "nghia.nguyen@zoi.de"
-    },
-    "license": "ISC",
+    "description": "libraries layer for ak-pra-backend",
     "scripts": {
       "build": "echo ignore",
       "test": "echo ignore",
@@ -20,8 +11,18 @@
       "lint": "echo ignore",
       "lint:fix": "echo ignore"
     },
-    "devDependencies": {
-      "serverless-prune-plugin": "^1.5.0"
+    "author": {
+      "email": "minh.tran@zoi.de",
+      "name": "Minh Tran"
+    },
+    "license": "ISC",
+    "dependencies": {
+      "@kaercher/ipp-cloud-common-lambda-libs": "1.0.2",
+      "inversify": "^5.1.1",
+      "reflect-metadata": "^0.1.13",
+      "common": "file:../../../../../libraries/common",
+      "database": "file:../../../../../libraries/database",
+      "application": "file:../../../../../libraries/application"
     }
   }
   
