@@ -33,21 +33,21 @@ provider:
   #     - ${self:custom.infrastructure.root_network_sn_private_a_id}
   #     - ${self:custom.infrastructure.root_network_sn_private_b_id}
 
-# custom:
-#   prune:
-#     automatic: true
-#     number: 10
-#   infrastructure: ${file(infrastructure.yml)}
-#   deploymentBucket: ak-pra-services-artifacts-${opt:region, self:provider.region}-${opt:stage, self:provider.stage}
-#   layers: ${file(layers.yml)}
-#   expose:
-#     dev: true
-#     stage: true
-#     prod: false
-#   logLevel:
-#     dev: info
-#     stage: debug
-#     prod: info
+custom:
+  prune:
+    automatic: true
+    number: 10
+  infrastructure: ${file(infrastructure.yml)}
+  deploymentBucket: ak-pra-services-artifacts-${opt:region, self:provider.region}-${opt:stage, self:provider.stage}
+  layers: ${file(layers.yml)}
+  expose:
+    dev: true
+    stage: true
+    prod: false
+  logLevel:
+    dev: info
+    stage: debug
+    prod: info
 
 package:
   patterns:
