@@ -9,11 +9,11 @@ plugins:
 provider:
   name: aws
   stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'eu-west-1'}
+  region: ${opt:region, 'us-east-1'}
   deploymentBucket:
     name: ${self:custom.deploymentBucket}
     maxPreviousDeploymentArtifacts: 10
-  # deploymentPrefix: ak-pra-backend/${self:service}/serverless
+  deploymentPrefix: ak-pra-backend/${self:service}/serverless
 
 custom:
   deploymentBucket: mapo-artifacts-${opt:region, self:provider.region}-${opt:stage, self:provider.stage}

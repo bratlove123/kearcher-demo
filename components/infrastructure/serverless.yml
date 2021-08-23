@@ -1,0 +1,34 @@
+service: mapo-resources
+
+frameworkVersion: '2'
+configValidationMode: 'error'
+
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'eu-west-1'}
+  deploymentBucket:
+    name: ${self:custom.deploymentBucket}
+    maxPreviousDeploymentArtifacts: 10
+  deploymentPrefix: ak-pra-backend/${self:service}/serverless
+
+custom:
+  deploymentBucket: ak-pra-services-artifacts-${opt:region, self:provider.region}-${opt:stage, self:provider.stage}
+  infrastructure: ${file(infrastructure.yml)}
+  resourceRegistryPrefix: /pra-resources/${opt:stage, self:provider.stage}/ak-pra-backend
+
+resources:
+  Resources:
+      usersTable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+          TableName: usersTable
+          AttributeDefinitions:
+            - AttributeName: email
+              AttributeType: S
+          KeySchema:
+            - AttributeName: email
+              KeyType: HASH
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
