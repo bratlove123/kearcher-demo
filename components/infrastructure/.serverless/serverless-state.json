@@ -1,0 +1,116 @@
+{
+  "service": {
+    "service": "mapo-resources",
+    "serviceObject": {
+      "name": "mapo-resources"
+    },
+    "provider": {
+      "name": "aws",
+      "stage": "dev",
+      "region": "us-east-1",
+      "deploymentBucket": "mapo-artifacts-us-east-1-dev",
+      "deploymentPrefix": "ak-pra-backend/mapo-resources/serverless",
+      "stackTags": {
+        "OWNER": "phong.ho@zoi.de"
+      },
+      "versionFunctions": true,
+      "deploymentBucketObject": {
+        "name": "mapo-artifacts-us-east-1-dev",
+        "maxPreviousDeploymentArtifacts": 10
+      },
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "usersTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "TableName": "usersTable",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "email",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "email",
+                  "KeyType": "HASH"
+                }
+              ],
+              "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "mapo-artifacts-us-east-1-dev",
+            "Export": {
+              "Name": "sls-mapo-resources-dev-ServerlessDeploymentBucketName"
+            }
+          }
+        }
+      }
+    },
+    "custom": {
+      "deploymentBucket": "mapo-artifacts-us-east-1-dev",
+      "resourceRegistryPrefix": "/pra-resources/dev/ak-pra-backend"
+    },
+    "pluginsData": {},
+    "functions": {},
+    "resources": {
+      "Resources": {
+        "usersTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "TableName": "usersTable",
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "email",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "email",
+                "KeyType": "HASH"
+              }
+            ],
+            "ProvisionedThroughput": {
+              "ReadCapacityUnits": 1,
+              "WriteCapacityUnits": 1
+            }
+          }
+        }
+      },
+      "Outputs": {}
+    },
+    "configValidationMode": "error",
+    "serviceFilename": "serverless.yml",
+    "initialServerlessConfig": {
+      "service": {
+        "$ref": "$[\"service\"][\"serviceObject\"]"
+      },
+      "frameworkVersion": "2",
+      "configValidationMode": "error",
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "custom": {
+        "$ref": "$[\"service\"][\"custom\"]"
+      },
+      "resources": {
+        "$ref": "$[\"service\"][\"resources\"]"
+      }
+    },
+    "layers": {},
+    "isDashboardMonitoringPreconfigured": false
+  },
+  "package": {
+    "artifactDirectoryName": "ak-pra-backend/mapo-resources/serverless/mapo-resources/dev/1629773669274-2021-08-24T02:54:29.274Z",
+    "artifact": ""
+  }
+}

@@ -30,14 +30,16 @@
   "dependencies": {
     "@automapper/classes": "^4.2.0",
     "@automapper/core": "^4.2.0",
+    "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
     "mysql": "^2.18.1",
     "typeorm": "^0.2.33"
   },
   "devDependencies": {
     "@automapper/types": "^4.2.0",
+    "@aws/dynamodb-data-mapper": "^0.7.3",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.9.0",
-    "aws-sdk": "^2.933.0",
+    "aws-sdk": "^2.974.0",
     "common": "file:../common",
     "inversify": "^5.1.1",
     "jest": "^27.0.5",
